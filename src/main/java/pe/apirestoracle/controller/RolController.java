@@ -21,46 +21,47 @@ import pe.apirestoracle.service.RolService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/roles")
 public class RolController {
-@Autowired
-private RolService rolService;
+	@Autowired
+	private RolService rolService;
 
-@GetMapping("/all")
-public List<Map<String, Object>> readAll(){
-	return rolService.readAll();
-}
-@GetMapping("/{id}")
-public List<Map<String, Object>> read(@PathVariable int id ) {
-	try {
-		 return rolService.read(id);
-	} catch (Exception e) {
-		// TODO: handle exception
-		System.out.println("error");
-		return null;
+	@GetMapping("/all")
+	public List<Map<String, Object>> readAll(){
+		return rolService.readAll();
 	}
-}
-@DeleteMapping("/delete/{id}")
-public int delete(@PathVariable int id ) {
-	return rolService.delete(id);
-}
-//PostMapping permite registrar un nuevo rol
-@PostMapping("/add")
-public int create(@RequestBody Rol r) {
-	System.out.println("Crear: "+r.getNombre());
-	return rolService.create(r);
-}
-//PutMappin permite modificar rol
-@PutMapping("/update/{id}")
-public int edit(@RequestBody Rol r, @PathVariable int id) {
-	//Map<String, Object> map = rolService.read(id);
-	System.out.println(r.getNombre());
-	Rol rol = new Rol();
-	rol.setIdrol(id);;
-	rol.setNombre(r.getNombre());	 	
-	return rolService.update(r);
-}
-@PutMapping("/update/logica/{id}")
-public int edit(@PathVariable int id) {
-	System.out.println(id);
-	return rolService.update(id);
-}
-}
+	@GetMapping("/{id}")
+	public List<Map<String, Object>> read(@PathVariable int id ) {
+		try {
+			 return rolService.read(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("error");
+			return null;
+		}
+	}
+	@DeleteMapping("/delete/{id}")
+	public int delete(@PathVariable int id ) {
+		return rolService.delete(id);
+	}
+	//PostMapping permite registrar un nuevo rol
+	@PostMapping("/add")
+	public int create(@RequestBody Rol r) {
+		System.out.println("Crear: "+r.getNombre());
+		return rolService.create(r);
+	}
+	//PutMappin permite modificar rol
+	@PutMapping("/update/{id}")
+	public int edit(@RequestBody Rol r, @PathVariable int id) {
+		//Map<String, Object> map = rolService.read(id);
+		System.out.println(r.getNombre());
+		Rol rol = new Rol();
+		rol.setIdrol(id);;
+		rol.setNombre(r.getNombre());	 	
+		return rolService.update(r);
+	}
+	@PutMapping("/update/logica/{id}")
+	public int edit(@PathVariable int id) {
+		System.out.println(id);
+		return rolService.update(id);
+	}
+	}
+
