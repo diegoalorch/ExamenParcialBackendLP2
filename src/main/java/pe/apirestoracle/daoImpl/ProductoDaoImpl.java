@@ -32,7 +32,7 @@ public class ProductoDaoImpl implements ProductoDao{
 	@Override
 	public int update(Producto p) {
 		// TODO Auto-generated method stub
-		return  jdbcTemplate.update("call PKG_PRODUCTO.SP_UPD_PRODUCTO(?,?)", p.getIdproducto(), p.getNomprod(), p.getPrecio(), p.getStock());
+		return  jdbcTemplate.update("call PKG_PRODUCTO.SP_UPD_PRODUCTO(?,?,?,?)", p.getIdproducto(), p.getNomprod(), p.getPrecio(), p.getStock());
 	}
 
 	@Override
